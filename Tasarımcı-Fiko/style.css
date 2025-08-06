@@ -1,0 +1,674 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 50px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+}
+
+.navbar {
+    display: flex;
+    gap: 80px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 0;
+    position: relative;
+}
+
+.navbar a.active::after,
+.navbar a:hover::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 4px;
+    background-color: #d6004e;
+    border-radius: -2px;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: -1;
+}
+
+.section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+}
+
+.content-up  {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.content-down{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.content-down p{
+    color: #D2004D;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.content-up span{font-size: 8.125rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+    color: white;
+
+}
+
+
+.content span {
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.section-dark-section {
+    background-color: #000000;
+    height: calc(100vh - 140px);
+    position: relative;
+    z-index: 1;
+    padding: 50px 0;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+}
+
+.about-container {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    gap: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.about-image {
+    width: 50%;
+    flex: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 100px;
+}
+
+.about-image img {
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    border-radius:60px;
+}
+
+.about-text {
+    width: 50%;
+    flex: none;
+    padding: 5px 100px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.about-text .subtitle {
+    color: #D2004D;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.about-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.about-description {
+    max-height: 100%;
+    overflow-y: auto;
+    padding-bottom: 20px;
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 50px,
+        black calc(100% - 50px),
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 50px,
+        black calc(100% - 50px),
+        transparent 100%
+    );
+    padding-top: 30px; /* Üst kısımda da boşluk ekleyin */
+}
+
+/* Scroll çubuğunu gizlemek için (opsiyonel) */
+.about-description::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.about-description p {
+    font-size: 1.7rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #cccccc;
+}
+
+/* Responsive tasarım için */
+@media (max-width: 968px) {
+    .about-container {
+        flex-direction: column;
+    }
+    
+    .about-image, .about-text {
+        width: 100%;
+    }
+}
+
+html {
+    scroll-padding-top: 140px;  /* Navbar yüksekliği kadar padding */
+    scroll-behavior: smooth;  /* Yumuşak scroll için */
+}
+
+#services.section {
+    min-height: calc(100vh - 140px);
+    margin-top: 100px;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px;
+    padding-top: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* İlk satırdaki öğeler için üst margin */
+.service-item:nth-child(-n+3) {
+    margin-top: 20px;
+}
+
+/* Son satırdaki öğeler için alt margin */
+.service-item:nth-child(n+4) {
+    margin-bottom: 20px;
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+    min-height: 180px;
+    background-color: #D2004D;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+/* Hover efekti */
+.service-item:hover {
+    background-color: #b1003f;  /* Hover'da biraz daha koyu ton */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(210, 0, 77, 0.5);  /* Gölge efektini koruduk */
+}
+
+.service-item img {
+    width: auto;
+    height: 90px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    max-width: 200px;
+}
+
+.service-item h3 {
+    color: white;
+    font-size: 1.6rem;
+    margin-top: 15px;
+}
+
+/* Responsive tasarım için */
+@media (max-width: 768px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);  /* Mobilde 2x3 grid */
+    }
+}
+
+@media (max-width: 480px) {
+    .services-container {
+        grid-template-columns: 1fr;  /* Küçük ekranlarda tek kolon */
+    }
+}
+
+#projects.section {
+    min-height: calc(100vh - 140px);
+    margin-top: 100px;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    padding: 20px;
+    padding-top: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
+.project-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container {
+    width: 360px; /* Kartın genişliğini mevcut boyutla aynı yaptık */
+    height: 250px; /* Kartın yüksekliğini mevcut boyutla aynı yaptık */
+    position: relative;
+    border-radius: 15px;
+}
+
+.card-container::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #f89b29 0%, #D2004D 100% );
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+.card .img-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D2004D;
+    transition: scale 0.6s, rotate 0.6s, filter 1s;
+}
+
+.card .img-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Görselleri kartın içine tam sığdır */
+    object-position: center;
+}
+
+.card .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1px;
+    color: #e8e8e8;
+    padding: 20px;
+    line-height: 1.5;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8); /* Kartın içinden gelmesini sağlamak için scale kullanıyoruz */
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.card:hover .content {
+    opacity: 1;
+    transform: scale(1); /* Hover durumunda scale'i 1 yaparak metinlerin görünmesini sağlıyoruz */
+}
+
+.card .content .heading {
+    font-size: 32px; /* Başlık boyutunu büyüttük */
+    font-weight: 700;
+    margin-bottom: 0.1px;
+}
+
+.card .content .divider {
+    width: 200px; /* Çizginin genişliği */
+    height: 2px; /* Çizginin yüksekliği */
+    background-color: #e8e8e8; /* Çizginin rengi */
+    margin: 0.2px 0  20px 0; /* Çizginin üst ve alt boşluğu */
+}
+
+.card .content p {
+    font-size: 15.5px;
+    margin-top: 0.1px; /* Metnin üst kısmındaki boşluğu kaldırdık */
+}
+
+.card:hover .img-content {
+    scale: 2.5;
+    rotate: 30deg;
+    filter: blur(7px);
+}
+
+.card:hover .img-content img {
+    opacity: 0;
+}
+
+/* Responsive tasarım için */
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);  /* Mobilde 2x3 grid */
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-container {
+        grid-template-columns: 1fr;  /* Küçük ekranlarda tek kolon */
+    }
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Dikey olarak ortalama */
+    justify-content: center; /* Yatay olarak ortalama */
+    padding: 20px 20px; /* Sağ ve sol boşluk değerleri */
+    padding-top: 10px; /* Üst boşluk */
+    padding-bottom: 100px; /* Alt boşluk */
+    max-width: 1200px; /* Hizalama için genişlik ayarı */
+    margin: 0 auto; /* Ortalamak için */
+    height: calc(100vh - 100px); /* Tam ekran yüksekliği, üst ve alt boşlukları hesaba kattık */
+    gap: 130px; /* Sol ve sağdaki öğeler arasındaki mesafeyi artırdık */
+    position: relative; /* Dikey ortalama için relative konumlandırma */
+}
+
+.contact-info {
+    width: 50%;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 100px;
+    color: white;
+}
+
+.contact-info .info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px; /* Bilgiler arasındaki mesafeyi artırdık */
+}
+
+.contact-info .info-item i {
+    font-size: 30px; /* İkonları büyüttük */
+    color: #D2004D;
+    margin-right: 15px; /* İkon ile metin arasındaki boşluğu artırdık */
+    border: 2px solid #D2004D; /* Dairenin kenarını ayarladık */
+    border-radius: 50%; /* Daire şekli verdik */
+    padding: 10px; /* İkonun etrafındaki boşluğu ayarladık */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Dairenin genişliğini ayarladık */
+    height: 50px; /* Dairenin yüksekliğini ayarladık */
+}
+
+.contact-info .info-item span {
+    font-size: 22px; /* Metinleri büyüttük */
+    color: #cccccc;
+}
+
+.contact-form {
+    width: 60%; /* Konteynerin genişliğini artırdık */
+    flex: none;
+    padding: 5px 50px; /* İçerideki boşlukları ayarladık */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    border-radius: 10px; /* Köşeleri yuvarladık */
+    padding: 20px 20px; /* İçerideki boşlukları ayarladık */
+    background-color: transparent; /* Arka plan rengini kaldırdık */
+    position: relative; /* Butonu dikey olarak ortalamak için relative konumlandırma */
+}
+
+.contact-form h2 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #ffffff; /* Başlık rengini beyaz olarak ayarladık */
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-container i {
+    position: absolute;
+    left: 15px;
+    top: 50%; /* İkonu yatay olarak ortaladık */
+    transform: translateY(-50%); /* İkonu tam ortalamak için translate kullanımı */
+    color: #cccccc;
+    font-size: 1.2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 20px 15px 20px 50px; /* Padding değerini artırdık ve sola boşluk ekledik */
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 25px; /* Köşe yumuşatması ekledik */
+    background-color: #ffffff; /* Form alanlarının arka plan rengini beyaz olarak ayarladık */
+    color: #333333; /* Form alanlarının metin rengini koyu gri olarak ayarladık */
+    box-sizing: border-box; /* Padding ve border dahil genişlik hesaplaması */
+    height: auto;
+}
+
+.contact-form input {
+    height: 60px; /* Input alanlarının yüksekliğini butonla aynı yaptık */
+    padding: 0 15px 0 50px; /* Padding değerini güncelledik */
+    border-radius: 30px; /* Köşe yumuşatması ekledik */
+}
+
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px 15px 50px; /* Mesaj alanının üst kısmına ve sola boşluk ekledik */
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 35px; /* Köşe yumuşatması ekledik */
+    background-color: #ffffff; /* Form alanlarının arka plan rengini beyaz olarak ayarladık */
+    color: #333333; /* Form alanlarının metin rengini koyu gri olarak ayarladık */
+    box-sizing: border-box; /* Padding ve border dahil genişlik hesaplaması */
+    height: 150px; /* Mesaj alanının yüksekliğini ayarladık */
+    text-align: left; /* Metni sola hizaladık */
+    vertical-align: top; /* Metni üst hizaladık */
+    line-height: 1.5; /* Satır yüksekliğini ayarladık */
+}
+
+.input-container.textarea-container i {
+    top: 15px; /* İkonu sol üst köşeye hizaladık */
+    transform: translateY(0); /* İkonu tam ortalamak için translate kullanımı */
+}
+
+.contact-form label {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    display: block;
+    color: #ffffff; /* Etiket rengini beyaz olarak ayarladık */
+}
+
+.contact-form button {
+    padding: 15px 20px; /* Butonun iç boşluklarını artırdık */
+    font-size: 1.2rem;
+    color: white;
+    background-color: #D2004D;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    transform: translatex(30%); /* Butonu aşağıya kaydırdık */
+    right: 200px;
+    width: 300px;
+    height: 60px; /* Butonun yüksekliğini inputlarla aynı yaptık */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-form button:hover {
+    background-color: #b1003f;
+}
+
+/* Responsive tasarım için */
+@media (max-width: 968px) {
+    .contact-container {
+        flex-direction: column;
+        height: auto; /* Yüksekliği otomatik yaparak mobilde daha iyi görünmesini sağladık */
+    }
+    
+    .contact-info, .contact-form {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 60px 0; /* Footer kısmını genişlettik */
+    text-align: center;
+}
+
+.social-media {
+    margin-bottom: 50px; /* İkonlar ile sayfa linkleri arasındaki boşluğu artırdık */
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* İkonlar arasındaki boşluğu ayarladık */
+}
+
+.social-icon {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+    background-color: #D2004D; /* İkonların arka plan rengini ayarladık */
+    border-radius: 50%; /* İkonları yuvarlak yaptık */
+    width: 50px; /* İkonların genişliğini ayarladık */
+    height: 50px; /* İkonların yüksekliğini ayarladık */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Çizgileri kaldırdık */
+}
+
+.social-icon:hover {
+    color: #fff; /* Hover rengini ayarladık */
+    background-color: #b1003f; /* Hover durumunda arka plan rengini değiştirdik */
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 60px; /* Butonlar arasındaki boşluğu artırdık */
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1.3rem;
+}
+
+.footer-nav a:hover {
+    color: #D2004D; /* Hover rengini ayarladık */
+}
